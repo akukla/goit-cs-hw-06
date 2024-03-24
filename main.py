@@ -25,8 +25,8 @@ async def run_blocking_tasks(executor, fn):
 
 
 async def main():
-    # with concurrent.futures.ProcessPoolExecutor() as executor:
-    with concurrent.futures.ThreadPoolExecutor() as executor:
+    with concurrent.futures.ProcessPoolExecutor() as executor:
+    # with concurrent.futures.ThreadPoolExecutor() as executor:
         # futures = [run_blocking_tasks(executor, run_web), run_socket_server()]
         futures = [run_blocking_tasks(executor, run_web), run_blocking_tasks(executor, run_socket_server)]
         results = await asyncio.gather(*futures)
